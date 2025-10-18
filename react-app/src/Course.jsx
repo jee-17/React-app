@@ -17,7 +17,7 @@ function Course(props){
     );
   }
 }
-Course.propType={
+Course.propTypes={
     name : PropTypes.string,
     rating : PropTypes.float
 
