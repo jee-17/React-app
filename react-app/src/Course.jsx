@@ -1,26 +1,26 @@
-import PropTypes from 'prop-types'
+import {useState} from 'react';
 
 function Course(props){
-   if(props.show  ){
+
+  //let purchased =false;
+  const [purchased,setpurchased]=useState(false);
+   function  BuyCourse(){
+       console.log("purchased");
+       setpurchased(true);
+   }
     return(
         <div className="card">
             <img src={props.image} alt=""/>
             <h3>{props.name}</h3>
             <p> {props.price}</p>
-            <span>{props.rating}</span>
+            <button onClick={BuyCourse}>Buy Now </button>
+            <p>{purchased ? "Already purchased ": "Get It Now"}</p>
         </div>
     );
-  }
-  else{
-    return(
-       <div className="card">Course Not Available</div>
-    );
-  }
+  
+  
+   
 }
-Course.propTypes={
-    name : PropTypes.string,
-    rating : PropTypes.float
 
-}
 
 export default Course
