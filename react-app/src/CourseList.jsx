@@ -2,9 +2,10 @@ import Course from './Course';
 import c from './assets/c.jpeg';
 import cpp from './assets/cpp.jpeg';
 import java from './assets/java.jpeg';
+import {useState} from 'react';
 
 function CourseList(){
-    const courses = [
+    const [courses , setCourses] = useState([
         {
             id:1,
            name:"c",
@@ -31,8 +32,12 @@ function CourseList(){
              image:java ,
              rating:3.5
     }
-]
-   const CoursesList = courses.map((course)=><Course key={course.id} name={course.name} image={course.image} price={course.price} rating={course.rating}/>)
+]);
+function HandleDelete(id){
+    const newCourse= courses.filter((course)=>course.id!=id)
+    setCourses(newCourse)
+}
+   const CoursesList = courses.map((course)=><Course key={course.id} name={course.name} image={course.image} price={course.price} rating={course.rating} delete={HandleDelete} id={course.id}/>)
     return(
          <>
          {CoursesList}
